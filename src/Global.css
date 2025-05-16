@@ -1,0 +1,69 @@
+.body {
+  display: block;
+  margin: 0px !important;
+}
+
+.slick-slide > div {
+  display: flex !important;
+}
+
+.slider-container {
+  padding: 5px 40px 10px;
+  margin-bottom: 40px;
+}
+
+.card-slide {
+  padding: 0 20px; /* Creates gap between cards */
+  box-sizing: border-box;
+}
+
+.card-content {
+  background-color: #0a3866;
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: radial-gradient(
+    circle at bottom right,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 80%
+  );
+}
+
+.card-content h4 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.card-content p {
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.know-more {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.know-more span {
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.arrow {
+  background-color: #fff;
+  color: #0a3866;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
