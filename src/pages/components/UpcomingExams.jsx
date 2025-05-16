@@ -12,6 +12,10 @@ const UpcomingExams = () => {
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
         justifyItems: "start",
         gap: "50px",
+        flexDirection:
+          typeof window !== "undefined" && window.innerWidth <= 768
+            ? "column"
+            : "row",
       }}
     >
       {/* Left Title Section */}
@@ -37,7 +41,16 @@ const UpcomingExams = () => {
       </div>
 
       {/* Exam Cards */}
-      <div style={{ display: "flex", gap: "6rem" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "6rem",
+          flexDirection:
+            typeof window !== "undefined" && window.innerWidth <= 768
+              ? "column"
+              : "row",
+        }}
+      >
         {EXAM_DATA.map((exam, index) => (
           <div
             key={index}

@@ -15,7 +15,7 @@ const Footer = () => {
         backgroundColor: "#0a3866",
         color: "white",
         fontFamily: "Segoe UI, sans-serif",
-        padding: "40px 60px 20px",
+        padding: "40px 20px 20px",
       }}
     >
       <div
@@ -24,10 +24,17 @@ const Footer = () => {
           justifyContent: "space-between",
           flexWrap: "wrap",
           marginBottom: "30px",
+          gap: "20px",
         }}
       >
         {/* Contact Us */}
-        <div style={{ maxWidth: "300px", marginBottom: "20px" }}>
+        <div
+          style={{
+            flex: "1 1 300px",
+            minWidth: "250px",
+            marginBottom: "20px",
+          }}
+        >
           <h3 style={{ fontSize: "16px", marginBottom: "10px" }}>Contact us</h3>
           <p style={{ fontSize: "14px", margin: "6px 0" }}>
             Address: amet, consetetur sadipscing elitr, sed diam
@@ -41,10 +48,22 @@ const Footer = () => {
         </div>
 
         {/* Social Icons */}
-        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+        <div
+          style={{
+            flex: "1 1 300px",
+            minWidth: "250px",
+            marginBottom: "20px",
+            textAlign: "center",
+          }}
+        >
           <h3 style={{ fontSize: "16px", marginBottom: "12px" }}>Follow us</h3>
           <div
-            style={{ display: "flex", gap: "2rem", justifyContent: "center" }}
+            style={{
+              display: "flex",
+              gap: "1.5rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
           >
             <Facebook size={25} />
             <Linkedin size={25} />
@@ -56,7 +75,13 @@ const Footer = () => {
         </div>
 
         {/* Head Office */}
-        <div style={{ maxWidth: "350px", marginBottom: "20px" }}>
+        <div
+          style={{
+            flex: "1 1 300px",
+            minWidth: "250px",
+            marginBottom: "20px",
+          }}
+        >
           <h3 style={{ fontSize: "16px", marginBottom: "10px" }}>
             Head Office
           </h3>

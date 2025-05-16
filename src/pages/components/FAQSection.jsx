@@ -1,19 +1,28 @@
 import { Plus, Minus } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FAQS_CONST } from "../constants/webPage.constants";
 import LOCAL_IMAGES from "../../assets/images/Local_Images";
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
+      {/* FAQ Section */}
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
-          padding: "40px 20px",
+          padding: isMobile ? "30px 15px" : "40px 20px",
           alignItems: "center",
         }}
       >
@@ -21,10 +30,10 @@ const FAQSection = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            padding: "20px 20px",
+            padding: "20px",
             fontFamily: "Segoe UI, sans-serif",
             justifyContent: "center",
-            width: "85%",
+            width: isMobile ? "100%" : "85%",
           }}
         >
           <h2
@@ -43,7 +52,10 @@ const FAQSection = () => {
             return (
               <div
                 key={index}
-                style={{ borderBottom: "1px solid #e0e0e0", padding: "15px 0" }}
+                style={{
+                  borderBottom: "1px solid #e0e0e0",
+                  padding: "15px 0",
+                }}
               >
                 <div
                   onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -55,7 +67,7 @@ const FAQSection = () => {
                     color: isOpen ? "#0a3866" : "#333",
                     fontSize: "15px",
                     fontWeight: isOpen ? "500" : "400",
-                    gap: "2rem",
+                    gap: "1rem",
                   }}
                 >
                   {item.question}
@@ -68,6 +80,7 @@ const FAQSection = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      minWidth: "20px",
                     }}
                   >
                     {isOpen ? (
@@ -94,27 +107,32 @@ const FAQSection = () => {
           })}
         </div>
       </div>
+
+      {/* Subscribe Section */}
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
-          position: "relative",
+          padding: isMobile ? "30px 15px" : "40px 20px",
+          backgroundColor: "#fff",
+          position: !isMobile && "relative",
         }}
       >
         <div
           style={{
             display: "flex",
+            flexDirection: isMobile ? "column" : "row",
             justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0px 40px 30px",
-            backgroundColor: "#fff",
+            alignItems: isMobile ? "flex-start" : "center",
+            padding: "20px",
+            width: isMobile ? "100%" : "85%",
             fontFamily: "Segoe UI, sans-serif",
-            width: "85%",
+            gap: isMobile ? "20px" : "0px",
           }}
         >
-          {/* Left Side - Text & Input */}
+          {/* Left Side */}
           <div style={{ flex: 1 }}>
             <h2
               style={{
@@ -137,7 +155,15 @@ const FAQSection = () => {
               nonumy eirmod tempor invidunt ut labore et dolore magna
             </p>
 
-            <div style={{ display: "flex", gap: "10px", maxWidth: "500px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: isMobile ? "column" : "row",
+                gap: "10px",
+                maxWidth: "500px",
+                width: "100%",
+              }}
+            >
               <input
                 type="email"
                 placeholder="Enter your Email Address"
@@ -149,6 +175,7 @@ const FAQSection = () => {
                   fontSize: "14px",
                   outline: "none",
                   boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+                  width: isMobile ? "100%" : "auto",
                 }}
               />
               <button
@@ -161,6 +188,7 @@ const FAQSection = () => {
                   cursor: "pointer",
                   fontSize: "14px",
                   boxShadow: "0 3px 6px rgba(0,0,0,0.2)",
+                  width: isMobile ? "100%" : "auto",
                 }}
               >
                 Subscribe Now ▶
@@ -173,15 +201,20 @@ const FAQSection = () => {
             style={{
               flex: 1,
               textAlign: "center",
-              position: "absolute",
-              right: 50,
-              bottom: 0,
+              position: isMobile ? "relative" : "absolute",
+              right: isMobile ? "0" : "50px",
+              bottom: isMobile ? "0" : "0px",
+              marginTop: isMobile ? "20px" : "0px",
             }}
           >
             <img
               src={LOCAL_IMAGES?.mailImg}
               alt="Subscribe illustration"
-              style={{ maxWidth: "100%", height: "15rem" }}
+              style={{
+                maxWidth: "100%",
+                height: isMobile ? "10rem" : "15rem",
+                objectFit: "contain",
+              }}
             />
           </div>
         </div>

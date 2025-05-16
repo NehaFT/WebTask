@@ -27,20 +27,29 @@ const ImageCarousel = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
                 backgroundColor: "#f8f9fb",
-                padding: "40px 10px 20px 60px",
+                padding: "40px 20px",
                 flexDirection: "row",
-                gap: "60px",
-                flexWrap: "nowrap",
+                gap: "40px",
+                flexWrap: "wrap",
                 minHeight: "400px",
-                width: "100%",
                 boxSizing: "border-box",
+
+                // Responsive styles
+                flexDirection:
+                  typeof window !== "undefined" && window.innerWidth <= 768
+                    ? "column"
+                    : "row",
+                textAlign:
+                  typeof window !== "undefined" && window.innerWidth <= 768
+                    ? "center"
+                    : "left",
               }}
             >
               {/* Left: Text */}
-              <div style={{ flex: 1 }}>
+              <div style={{ flex: 1, minWidth: "300px" }}>
                 <h2
                   style={{
-                    fontSize: "32px",
+                    fontSize: "28px",
                     fontWeight: "bold",
                     color: "#1a3d7c",
                     marginBottom: "20px",
@@ -74,11 +83,16 @@ const ImageCarousel = () => {
               </div>
 
               {/* Right: Image */}
-              <div style={{ textAlign: "center" }}>
+              <div style={{ flex: 1, textAlign: "center", minWidth: "300px" }}>
                 <img
                   src={slide.image}
                   alt={slide.title}
-                  style={{ width: "100%", maxWidth: "400px", height: "100%", maxHeight:"500px" }}
+                  style={{
+                    width: "100%",
+                    maxWidth: "400px",
+                    height: "auto",
+                    maxHeight: "400px",
+                  }}
                 />
               </div>
             </div>
